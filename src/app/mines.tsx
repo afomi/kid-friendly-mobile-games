@@ -7,11 +7,12 @@ import { pad3 } from "@/lib/format";
 import { load, save, useStored } from "@/lib/storage";
 import { Chip, Note, Row, Screen, Win, WinCard, useTicker } from "@/ui/kit";
 import { C } from "@/ui/theme";
+import { SaveStatus } from "@/ui/save-status";
 
 const LABEL: Record<Level, string> = { beginner: "Beginner", intermediate: "Intermediate", expert: "Expert" };
 
 export default function Mines() {
-  const [lv, setLv, ready] = useStored<Level>("mines-level", "beginner");
+  const [lv, setLv, ready, storage] = useStored<Level>("mines-level", "beginner");
   const [g, setG] = useState<MinesGame>(() => newBoard("beginner"));
   const [secs, setSecs] = useState(0);
   const [flagMode, setFlagMode] = useState(false);
@@ -71,8 +72,11 @@ export default function Mines() {
   // Cells shrink to fit the screen, down to 28pt; bigger boards scroll sideways.
   const cell = Math.max(28, Math.min(40, Math.floor((width - 4) / g.w) - 2));
 
+  if (!ready) return <Screen><SaveStatus {...storage} ready={false} /></Screen>;
+
   return (
     <Screen>
+      {storage.status === "error" && <SaveStatus {...storage} ready={ready} />}
       <Row>
         {(Object.keys(LEVELS) as Level[]).map((l) => (
           <Chip key={l} label={LABEL[l]} on={l === lv} onPress={() => start(l)} />

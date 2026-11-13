@@ -6,9 +6,10 @@ import { pick } from "@/lib/random";
 import { useStored } from "@/lib/storage";
 import { Note, Screen, Win, WinCard } from "@/ui/kit";
 import { C } from "@/ui/theme";
+import { SaveStatus } from "@/ui/save-status";
 
 export default function Lights() {
-  const [saved, setSaved, ready] = useStored<number>("lights-level", 1);
+  const [saved, setSaved, ready, storage] = useStored<number>("lights-level", 1);
   const [g, setG] = useState<LightsGame>(() => newPuzzle(1));
   const [hint, setHint] = useState(-1);
   const [msg, setMsg] = useState("");
@@ -52,8 +53,11 @@ export default function Lights() {
     setMsg("Try the outlined button.");
   };
 
+  if (!ready) return <Screen><SaveStatus {...storage} ready={false} /></Screen>;
+
   return (
     <Screen>
+      <SaveStatus {...storage} ready={ready} />
       <View style={st.unit}>
         <View style={st.head}>
           <Text style={st.brand}>

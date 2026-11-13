@@ -1,0 +1,503 @@
+[
+  {
+    "id": 1,
+    "name": "Bulbasaur",
+    "types": [
+      "grass",
+      "poison"
+    ],
+    "color": "green",
+    "height": 7,
+    "legendary": false
+  },
+  {
+    "id": 2,
+    "name": "Ivysaur",
+    "types": [
+      "grass",
+      "poison"
+    ],
+    "color": "green",
+    "height": 10,
+    "legendary": false
+  },
+  {
+    "id": 3,
+    "name": "Venusaur",
+    "types": [
+      "grass",
+      "poison"
+    ],
+    "color": "green",
+    "height": 20,
+    "legendary": false
+  },
+  {
+    "id": 4,
+    "name": "Charmander",
+    "types": [
+      "fire"
+    ],
+    "color": "red",
+    "height": 6,
+    "legendary": false
+  },
+  {
+    "id": 5,
+    "name": "Charmeleon",
+    "types": [
+      "fire"
+    ],
+    "color": "red",
+    "height": 11,
+    "legendary": false
+  },
+  {
+    "id": 6,
+    "name": "Charizard",
+    "types": [
+      "fire",
+      "flying"
+    ],
+    "color": "red",
+    "height": 17,
+    "legendary": false
+  },
+  {
+    "id": 7,
+    "name": "Squirtle",
+    "types": [
+      "water"
+    ],
+    "color": "blue",
+    "height": 5,
+    "legendary": false
+  },
+  {
+    "id": 8,
+    "name": "Wartortle",
+    "types": [
+      "water"
+    ],
+    "color": "blue",
+    "height": 10,
+    "legendary": false
+  },
+  {
+    "id": 9,
+    "name": "Blastoise",
+    "types": [
+      "water"
+    ],
+    "color": "blue",
+    "height": 16,
+    "legendary": false
+  },
+  {
+    "id": 12,
+    "name": "Butterfree",
+    "types": [
+      "bug",
+      "flying"
+    ],
+    "color": "white",
+    "height": 11,
+    "legendary": false
+  },
+  {
+    "id": 16,
+    "name": "Pidgey",
+    "types": [
+      "normal",
+      "flying"
+    ],
+    "color": "brown",
+    "height": 3,
+    "legendary": false
+  },
+  {
+    "id": 25,
+    "name": "Pikachu",
+    "types": [
+      "electric"
+    ],
+    "color": "yellow",
+    "height": 4,
+    "legendary": false
+  },
+  {
+    "id": 26,
+    "name": "Raichu",
+    "types": [
+      "electric"
+    ],
+    "color": "yellow",
+    "height": 8,
+    "legendary": false
+  },
+  {
+    "id": 35,
+    "name": "Clefairy",
+    "types": [
+      "fairy"
+    ],
+    "color": "pink",
+    "height": 6,
+    "legendary": false
+  },
+  {
+    "id": 37,
+    "name": "Vulpix",
+    "types": [
+      "fire"
+    ],
+    "color": "brown",
+    "height": 6,
+    "legendary": false
+  },
+  {
+    "id": 39,
+    "name": "Jigglypuff",
+    "types": [
+      "normal",
+      "fairy"
+    ],
+    "color": "pink",
+    "height": 5,
+    "legendary": false
+  },
+  {
+    "id": 52,
+    "name": "Meowth",
+    "types": [
+      "normal"
+    ],
+    "color": "yellow",
+    "height": 4,
+    "legendary": false
+  },
+  {
+    "id": 54,
+    "name": "Psyduck",
+    "types": [
+      "water"
+    ],
+    "color": "yellow",
+    "height": 8,
+    "legendary": false
+  },
+  {
+    "id": 58,
+    "name": "Growlithe",
+    "types": [
+      "fire"
+    ],
+    "color": "brown",
+    "height": 7,
+    "legendary": false
+  },
+  {
+    "id": 63,
+    "name": "Abra",
+    "types": [
+      "psychic"
+    ],
+    "color": "brown",
+    "height": 9,
+    "legendary": false
+  },
+  {
+    "id": 66,
+    "name": "Machop",
+    "types": [
+      "fighting"
+    ],
+    "color": "gray",
+    "height": 8,
+    "legendary": false
+  },
+  {
+    "id": 74,
+    "name": "Geodude",
+    "types": [
+      "rock",
+      "ground"
+    ],
+    "color": "brown",
+    "height": 4,
+    "legendary": false
+  },
+  {
+    "id": 77,
+    "name": "Ponyta",
+    "types": [
+      "fire"
+    ],
+    "color": "yellow",
+    "height": 10,
+    "legendary": false
+  },
+  {
+    "id": 79,
+    "name": "Slowpoke",
+    "types": [
+      "water",
+      "psychic"
+    ],
+    "color": "pink",
+    "height": 12,
+    "legendary": false
+  },
+  {
+    "id": 81,
+    "name": "Magnemite",
+    "types": [
+      "electric",
+      "steel"
+    ],
+    "color": "gray",
+    "height": 3,
+    "legendary": false
+  },
+  {
+    "id": 92,
+    "name": "Gastly",
+    "types": [
+      "ghost",
+      "poison"
+    ],
+    "color": "purple",
+    "height": 13,
+    "legendary": false
+  },
+  {
+    "id": 94,
+    "name": "Gengar",
+    "types": [
+      "ghost",
+      "poison"
+    ],
+    "color": "purple",
+    "height": 15,
+    "legendary": false
+  },
+  {
+    "id": 95,
+    "name": "Onix",
+    "types": [
+      "rock",
+      "ground"
+    ],
+    "color": "gray",
+    "height": 88,
+    "legendary": false
+  },
+  {
+    "id": 104,
+    "name": "Cubone",
+    "types": [
+      "ground"
+    ],
+    "color": "brown",
+    "height": 4,
+    "legendary": false
+  },
+  {
+    "id": 113,
+    "name": "Chansey",
+    "types": [
+      "normal"
+    ],
+    "color": "pink",
+    "height": 11,
+    "legendary": false
+  },
+  {
+    "id": 123,
+    "name": "Scyther",
+    "types": [
+      "bug",
+      "flying"
+    ],
+    "color": "green",
+    "height": 15,
+    "legendary": false
+  },
+  {
+    "id": 129,
+    "name": "Magikarp",
+    "types": [
+      "water"
+    ],
+    "color": "red",
+    "height": 9,
+    "legendary": false
+  },
+  {
+    "id": 130,
+    "name": "Gyarados",
+    "types": [
+      "water",
+      "flying"
+    ],
+    "color": "blue",
+    "height": 65,
+    "legendary": false
+  },
+  {
+    "id": 131,
+    "name": "Lapras",
+    "types": [
+      "water",
+      "ice"
+    ],
+    "color": "blue",
+    "height": 25,
+    "legendary": false
+  },
+  {
+    "id": 132,
+    "name": "Ditto",
+    "types": [
+      "normal"
+    ],
+    "color": "purple",
+    "height": 3,
+    "legendary": false
+  },
+  {
+    "id": 133,
+    "name": "Eevee",
+    "types": [
+      "normal"
+    ],
+    "color": "brown",
+    "height": 3,
+    "legendary": false
+  },
+  {
+    "id": 134,
+    "name": "Vaporeon",
+    "types": [
+      "water"
+    ],
+    "color": "blue",
+    "height": 10,
+    "legendary": false
+  },
+  {
+    "id": 135,
+    "name": "Jolteon",
+    "types": [
+      "electric"
+    ],
+    "color": "yellow",
+    "height": 8,
+    "legendary": false
+  },
+  {
+    "id": 136,
+    "name": "Flareon",
+    "types": [
+      "fire"
+    ],
+    "color": "red",
+    "height": 9,
+    "legendary": false
+  },
+  {
+    "id": 143,
+    "name": "Snorlax",
+    "types": [
+      "normal"
+    ],
+    "color": "black",
+    "height": 21,
+    "legendary": false
+  },
+  {
+    "id": 144,
+    "name": "Articuno",
+    "types": [
+      "ice",
+      "flying"
+    ],
+    "color": "blue",
+    "height": 17,
+    "legendary": true
+  },
+  {
+    "id": 145,
+    "name": "Zapdos",
+    "types": [
+      "electric",
+      "flying"
+    ],
+    "color": "yellow",
+    "height": 16,
+    "legendary": true
+  },
+  {
+    "id": 146,
+    "name": "Moltres",
+    "types": [
+      "fire",
+      "flying"
+    ],
+    "color": "yellow",
+    "height": 20,
+    "legendary": true
+  },
+  {
+    "id": 149,
+    "name": "Dragonite",
+    "types": [
+      "dragon",
+      "flying"
+    ],
+    "color": "brown",
+    "height": 22,
+    "legendary": false
+  },
+  {
+    "id": 150,
+    "name": "Mewtwo",
+    "types": [
+      "psychic"
+    ],
+    "color": "purple",
+    "height": 20,
+    "legendary": true
+  },
+  {
+    "id": 151,
+    "name": "Mew",
+    "types": [
+      "psychic"
+    ],
+    "color": "pink",
+    "height": 4,
+    "legendary": true
+  },
+  {
+    "id": 175,
+    "name": "Togepi",
+    "types": [
+      "fairy"
+    ],
+    "color": "white",
+    "height": 3,
+    "legendary": false
+  },
+  {
+    "id": 448,
+    "name": "Lucario",
+    "types": [
+      "fighting",
+      "steel"
+    ],
+    "color": "blue",
+    "height": 12,
+    "legendary": false
+  }
+]

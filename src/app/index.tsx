@@ -1,12 +1,14 @@
 import { Href, router, useFocusEffect } from "expo-router";
 import { ReactNode, useCallback, useState } from "react";
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 import { ITEMS } from "@/games/alchemy/logic";
+import { POKEMON, SAVE_KEY, freshProgress, restoreProgress } from "@/games/pokemon/logic";
+import { IMAGES } from "@/games/pokemon/images";
 import { load } from "@/lib/storage";
 import { Screen } from "@/ui/kit";
 import { C } from "@/ui/theme";
 
-type Bests = { alchemy: string; pairs: string; lights: string; mines: string; math: string };
+type Bests = { alchemy: string; pairs: string; lights: string; mines: string; math: string; pokemon: string };
 
 async function readBests(): Promise<Bests> {
   const pb = (await Promise.all([6, 10, 15].map((n) => load<{ moves: number } | null>(`pairs-best-${n}`, null)))).filter(
@@ -16,7 +18,13 @@ async function readBests(): Promise<Bests> {
   const mines = await load<number | null>("mines-best-beginner", null);
   const found = await load<Record<string, unknown> | null>("alchemy-found", null);
   const tally = await load<number>("math-tally", 0);
+  let collection = "Find and collect Pokémon";
+  try {
+    const progress = restoreProgress(await load(SAVE_KEY, freshProgress()));
+    collection = `${progress.caught.length} of ${POKEMON.length} collected${progress.round && !progress.round.won ? " · Continue your mystery" : ""}`;
+  } catch { /* The game offers retry for an unreadable save. */ }
   return {
+    pokemon: collection,
     alchemy: found ? `Discovered ${Object.keys(found).length} of ${ITEMS.length}` : `${ITEMS.length} things to discover`,
     pairs: pb.length ? `Best: ${Math.min(...pb.map((b) => b.moves))} moves` : "",
     lights: level > 1 ? `Reached level ${level}` : "",
@@ -37,8 +45,11 @@ export default function Home() {
     <Screen>
       <View style={{ gap: 4 }}>
         <Text style={st.h}>Pick a game</Text>
-        <Text style={st.sub}>Five small games in one place. Your progress is saved on this device.</Text>
+        <Text style={st.sub}>Six small games in one place. Your progress is saved on this device.</Text>
       </View>
+      <Tile href="/pokemon" title="Pokémon Guess Who" best={b?.pokemon}
+        art={<View style={[st.artFill, { backgroundColor: C.face }]}><Image source={IMAGES[25]} style={{ width: 80, height: 80 }} /></View>}
+        text={`Ask questions, find the mystery Pokémon, and collect ${POKEMON.length} friends.`} />
       <Tile href="/alchemy" title="Alchemy" best={b?.alchemy} art={<AlchemyArt />}
         text="Drag two things together to make something new. Start with water, fire, earth and air." />
       <Tile href="/pairs" title="Animal Pairs" best={b?.pairs} art={<PairsArt />}

@@ -5,6 +5,7 @@ import { Op, Problem, SIZES, Spec, build, generate, sheetAt } from "@/games/math
 import { useStored } from "@/lib/storage";
 import { Chip, Row, Screen, Win, WinCard } from "@/ui/kit";
 import { C } from "@/ui/theme";
+import { SaveStatus } from "@/ui/save-status";
 
 const ROUND = 10;
 const OPS: [Op, string, string][] = [
@@ -20,11 +21,14 @@ const sizeLabel = (op: Op, n: number) =>
   op === "div" ? `÷ ${n}-digit` : op === "mul" ? `${n}-digit × ${n === 1 ? "1" : n}` : `${n}-digit`;
 
 export default function MathSteps() {
-  const [mode, setMode, ready] = useStored<{ op: Op; n: number }>("math-mode", { op: "add", n: 2 });
-  const [tally, setTally] = useStored<number>("math-tally", 0);
-  const [solved, setSolved] = useStored<number>("math-solved", 0);
-  const [bestStreak, setBestStreak] = useStored<number>("math-best-streak", 0);
-  const [round, setRound] = useStored<Round>("math-round", { no: 1, res: [], tally: 0 });
+  const [mode, setMode, modeReady, modeStorage] = useStored<{ op: Op; n: number }>("math-mode", { op: "add", n: 2 });
+  const [tally, setTally, tallyReady, tallyStorage] = useStored<number>("math-tally", 0);
+  const [solved, setSolved, solvedReady, solvedStorage] = useStored<number>("math-solved", 0);
+  const [bestStreak, setBestStreak, bestStreakReady, bestStreakStorage] = useStored<number>("math-best-streak", 0);
+  const [round, setRound, roundReady, roundStorage] = useStored<Round>("math-round", { no: 1, res: [], tally: 0 });
+  const ready = modeReady && tallyReady && solvedReady && bestStreakReady && roundReady;
+  const stores = [modeStorage, tallyStorage, solvedStorage, bestStreakStorage, roundStorage];
+  const storage = stores.find((s) => s.status === "error") ?? stores.find((s) => s.status === "loading") ?? stores.find((s) => s.status === "saving") ?? modeStorage;
   const [streak, setStreak] = useState(0);
   const [q, setQ] = useState<Q | null>(null);
   const [plus, setPlus] = useState("");
@@ -46,7 +50,7 @@ export default function MathSteps() {
   }, [ready]);
 
   const P: Problem | null = useMemo(() => (q ? build(q.spec) : null), [q?.spec]); // eslint-disable-line react-hooks/exhaustive-deps
-  if (!q || !P) return <Screen>{null}</Screen>;
+  if (!ready || !q || !P) return <Screen><SaveStatus {...storage} ready={ready} /></Screen>;
 
   const div = q.spec.op === "div";
   const total = P.steps.length;
@@ -117,6 +121,7 @@ export default function MathSteps() {
 
   return (
     <Screen>
+      <SaveStatus {...storage} ready={ready} />
       <Row>
         {OPS.map(([op, sym]) => (
           <Chip key={op} label={sym} on={op === q.spec.op} onPress={() => fresh(op, mode.n)} style={st.opChip} />
@@ -135,7 +140,7 @@ export default function MathSteps() {
             <Text style={st.big}>{tally.toLocaleString()}</Text>
             <Text style={st.plus}>{plus}</Text>
           </View>
-          <Text style={st.sub}>Every answer you've solved, added together</Text>
+          <Text style={st.sub}>Every answer you’ve solved, added together</Text>
         </View>
         <View style={{ flexDirection: "row", gap: 16 }}>
           {([["Solved", solved], ["Streak", streak], ["Best", bestStreak]] as const).map(([k, v]) => (

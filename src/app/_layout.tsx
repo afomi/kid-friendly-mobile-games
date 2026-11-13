@@ -17,6 +17,7 @@ export default function Layout() {
         }}
       >
         <Stack.Screen name="index" options={{ title: "Medley" }} />
+        <Stack.Screen name="pokemon" options={{ title: "Pokémon Guess Who" }} />
         <Stack.Screen name="alchemy" options={{ title: "Alchemy" }} />
         <Stack.Screen name="pairs" options={{ title: "Animal Pairs" }} />
         <Stack.Screen name="lights" options={{ title: "Lights Out" }} />

@@ -2,14 +2,14 @@
   "expo": {
     "name": "Medley",
     "slug": "medley",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.afomi.medley",
-      "buildNumber": "1",
+      "buildNumber": "2",
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false
       }
@@ -22,7 +22,8 @@
         "monochromeImage": "./assets/android-icon-monochrome.png"
       },
       "predictiveBackGestureEnabled": false,
-      "package": "com.afomi.medley"
+      "package": "com.afomi.medley",
+      "versionCode": 2
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -33,6 +34,17 @@
     "scheme": "medley",
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "router": {
+        "asyncRoutes": {
+          "web": true
+        }
+      },
+      "eas": {
+        "projectId": "dfa914ca-0050-4a82-8505-fca9ef61bbbe"
+      }
+    },
+    "owner": "civicstudio"
   }
 }

@@ -34,3 +34,12 @@ https://afomi.s3.amazonaws.com/apk/medley-expo.apk.
 It's signed with the debug keystore, which is fine for sideloading.
 First build 2026-11-13: 93 MB, `com.afomi.medley` 1.0.0, Android 7+.
 The older `apk/Medley.apk` (2026-10-13) in that bucket is an earlier build, left as is.
+
+## Pokémon Guess Who (2026-11-13)
+
+- Added a sixth game with 48 bundled Pokémon, clue-based elimination, and a persistent collection.
+- Saves the current mystery, clues, guesses and wins together under `pokemon-guess-who-v1`.
+- Shared storage now gates play during restore, orders writes and supports visible retry on failure.
+- Existing saves and Android package/signing identity are retained.
+- Added lint configuration, storage/restart tests and a Guess Who screen integration test.
+- EAS preview profile builds version 1.1.0 (Android version code 2); infra receives the APK for S3 publishing.

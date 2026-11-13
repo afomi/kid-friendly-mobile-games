@@ -6,12 +6,13 @@ import { clock } from "@/lib/format";
 import { load, save, useStored } from "@/lib/storage";
 import { Chip, Note, Row, Screen, Stats, Win, WinCard, useTicker } from "@/ui/kit";
 import { C } from "@/ui/theme";
+import { SaveStatus } from "@/ui/save-status";
 
 const LABEL: Record<Level, string> = { 6: "Easy · 6", 10: "Normal · 10", 15: "Hard · 15" };
 const GAP = 8;
 
 export default function Pairs() {
-  const [level, setLevel, ready] = useStored<Level>("pairs-level", 10);
+  const [level, setLevel, ready, storage] = useStored<Level>("pairs-level", 10);
   const [g, setG] = useState<PairsGame>(() => newGame(10));
   const [secs, setSecs] = useState(0);
   const [started, setStarted] = useState(false);
@@ -66,8 +67,11 @@ export default function Pairs() {
   const cols = width < 400 && level === 15 ? 5 : COLUMNS[level];
   const cardW = width ? (width - GAP * (cols - 1)) / cols : 0;
 
+  if (!ready) return <Screen><SaveStatus {...storage} ready={false} /></Screen>;
+
   return (
     <Screen>
+      {storage.status === "error" && <SaveStatus {...storage} ready={ready} />}
       <Row>
         {LEVELS.map((lv) => (
           <Chip key={lv} label={LABEL[lv]} on={lv === level} onPress={() => start(lv)} />

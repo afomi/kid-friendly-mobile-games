@@ -5,6 +5,7 @@ import { CATEGORIES, Found, ITEMS, STARTERS, combine, discover, freshFound, mile
 import { useStored } from "@/lib/storage";
 import { Chip, Note, Screen } from "@/ui/kit";
 import { C } from "@/ui/theme";
+import { SaveStatus } from "@/ui/save-status";
 
 type Node = { uid: number; id: number; x: number; y: number; nope?: number; pop?: boolean };
 type Shown = { r: number; a: number; b: number; n: number; extra: string | null };
@@ -15,8 +16,9 @@ const BOARD_H = 340;
 const REACH = 50; // how close a drop must land to combine
 
 export default function Alchemy() {
-  const [found, setFound, ready] = useStored<Found>("alchemy-found", freshFound());
-  const [last, setLast] = useStored<number>("alchemy-last", -1);
+  const [found, setFound, foundReady, storage] = useStored<Found>("alchemy-found", freshFound());
+  const [last, setLast, lastReady, lastStorage] = useStored<number>("alchemy-last", -1);
+  const ready = foundReady && lastReady;
   const [board, setBoard] = useState<Node[]>([]);
   const [boardW, setBoardW] = useState(0);
   const [sel, setSel] = useState<number | null>(null);
@@ -187,8 +189,11 @@ export default function Alchemy() {
     : hint.level === 1 ? `Try mixing ${ITEMS[hint.a].emoji} ${ITEMS[hint.a].name} with something.`
     : `Try ${ITEMS[hint.a].emoji} ${ITEMS[hint.a].name} + ${ITEMS[hint.b].emoji} ${ITEMS[hint.b].name}.`;
 
+  if (!ready) return <Screen><SaveStatus {...(!foundReady ? storage : lastStorage)} ready={false} /></Screen>;
+
   return (
     <Screen scrollEnabled={!dragging}>
+      <SaveStatus {...(lastStorage.status === "error" ? lastStorage : storage)} ready={ready} />
       <View style={st.prog}>
         <Text style={st.progText}>{ids.length} / {total} discovered</Text>
         <View style={st.bar}>
