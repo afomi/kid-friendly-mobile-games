@@ -25,4 +25,12 @@ Run `npx expo start` (or `npx expo run:ios`) and play each game.
   Watch Alchemy dragging inside the scrolling page, and Minesweeper long-press.
 - App icon and splash (currently the Expo defaults).
 - Drag from the Alchemy collection onto the table (today it's tap-to-add).
-- Optional: build scripts for TestFlight and APK, following strikenight-mobile.
+- Optional: a TestFlight script, following strikenight-mobile.
+
+## APK
+
+`scripts/build-apk.sh` builds a release APK and uploads it public-read to
+https://afomi.s3.amazonaws.com/apk/medley-expo.apk.
+It's signed with the debug keystore, which is fine for sideloading.
+First build 2026-11-13: 93 MB, `com.afomi.medley` 1.0.0, Android 7+.
+The older `apk/Medley.apk` (2026-10-13) in that bucket is an earlier build, left as is.
